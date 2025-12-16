@@ -66,7 +66,7 @@ Q20. Which topics from the notes are most frequently combined in exam-style proo
 ## Retrieval Experiment (Mini)
 Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a small subset of exam-style questions, and analyse evidence recall.
 
-### Setup**
+### Setup
 - Data: a subset of the Complex Analysis PDFs in `docs/`
 - Query set: 5 exam-style questions (from the Evaluation Questions section)
 - Output: Top-3 retrieved chunks for each method + a small result table (manual judgement)
@@ -92,7 +92,7 @@ A retrieval is considered successful if at least one of the top-3 chunks contain
 relevant definition, formula, or explanation required by the question.
 
 ## Preliminary Results
-
+Experiments are currently in progress. The table below reflects the planned evaluation format.
 Below is a template result table for planned retrieval comparison.
 This table will be filled with evidence recall results from both sparse and dense retrieval.
 
