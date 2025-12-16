@@ -1,6 +1,5 @@
-# rag-study-assistant
-A citation-grounded RAG demo for exam-oriented PDF study
 # A Citation-Grounded RAG Study Assistant for Exam-Oriented PDF Study
+*A citation-Grounded RAG demo for Exam-Oriented PDF Study*
 
 ## Note
 This repository presents a small research-oriented demo of a retrieval-augmented generation (RAG) system.
@@ -63,7 +62,7 @@ Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a sm
 
 ### Setup
 - Data: a subset of the Complex Analysis PDFs in `docs/`
-- Query set: 5 exam-style questions (from the Evaluation Questions section)
+- Query set: 3 exam-style questions (from the Evaluation Questions section)
 - Output: Top-3 retrieved chunks for each method + a small result table (manual judgement)
 
 ### Experiment Design
@@ -79,6 +78,7 @@ Three representative exam-style questions were selected from the *Evaluation Que
 - **Q3**: What does it mean for a function to be holomorphic on a domain?  
 - **Q7**: State the Cauchy–Riemann equations and explain their role in complex differentiability.  
 - **Q18**: How are power series used to represent holomorphic functions locally?
+  
 **Procedure**
 For each question, the top-3 retrieved text chunks are collected for each retrieval method.
 Retrieved chunks are manually inspected to determine whether they contain sufficient information to answer the question. The results are summarised in a small comparison table to support qualitative analysis.
