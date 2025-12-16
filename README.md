@@ -58,7 +58,7 @@ Q19. What common mistakes do students make when applying the definition of compl
 Q20. Which topics from the notes are most frequently combined in exam-style proof questions?
 
 ## Retrieval Experiment (Mini)
-Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a small subset of exam-style questions, and analyse evidence recall.
+Goal: compare sparse (keyword/BM25-style) retrieval with a TF-IDF semantic baseline on a small subset of exam-style questions, and analyse evidence recall.
 
 ### Setup
 - Data: a subset of the Complex Analysis PDFs in `docs/`
@@ -67,12 +67,11 @@ Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a sm
 
 ### Experiment Design
 I conduct a small-scale retrieval experiment focusing on evidence recall rather than generation quality. TF-IDF is used as a lightweight semantic baseline rather than a true dense
-embedding-based retriever, allowing controlled analysis of retrieval behaviour
-without introducing neural embedding models.
+embedding-based retriever, allowing controlled analysis of retrieval behaviour without introducing neural embedding models.
 
 **Retrieval Methods**
 - Sparse retrieval: keyword-based (BM25-style)
-- Dense retrieval: embedding-based semantic search
+- Semantic baseline retrieval: TF-IDF vector space similarity
 
 ### Query Set
 Three representative exam-style questions were selected from the *Evaluation Questions* section to conduct the retrieval experiment. These questions focus on definitions and conceptual understanding commonly tested in Complex Analysis exams:
