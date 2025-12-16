@@ -1,5 +1,5 @@
 # A Citation-Grounded RAG Study Assistant for Exam-Oriented PDF Study
-*A citation-Grounded RAG demo for Exam-Oriented PDF Study*
+*A citation-grounded RAG demo for exam-oriented PDF study*
 
 ## Note
 This repository presents a small research-oriented demo of a retrieval-augmented generation (RAG) system.
@@ -19,9 +19,9 @@ The system indexes 10–20 course PDFs, including Analysis III (Complex Analysis
 ## Method
 The proposed system follows a retrieval-augmented pipeline:
 - Document segmentation into manageable text chunks  
-- Hybrid retrieval using sparse (BM25) and dense embedding-based methods  
-- Reranking of retrieved candidates  
-- Evidence-grounded answer generation with explicit source citations  
+- Sparse retrieval using keyword-based (BM25-style) methods  
+- Dense retrieval using TF-IDF semantic similarity  
+- Evidence-grounded answer generation with explicit source citations   
 
 ## Evaluation Plan
 The system is evaluated using a manually curated set of exam-style questions.
@@ -62,8 +62,8 @@ Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a sm
 
 ### Setup
 - Data: a subset of the Complex Analysis PDFs in `docs/`
-- Query set: 3 exam-style questions (from the Evaluation Questions section)
-- Output: Top-3 retrieved chunks for each method + a small result table (manual judgement)
+- Query set: 3 exam-style questions (Q3, Q7, Q18) selected from the Evaluation Questions section
+- Output: Top-K retrieved chunks (K = 3 and K = 5) for each method with manual relevance judgement
 
 ### Experiment Design
 We conduct a small-scale retrieval experiment focusing on evidence recall rather than generation quality.
@@ -107,4 +107,5 @@ Citation-grounded generation is expected to reduce hallucinated answers and impr
 Common failure modes include loss of mathematical symbols during PDF parsing, incomplete retrieval caused by overly coarse text chunking, and ambiguity when similar definitions
 appear across multiple lectures.
 These observations motivate future improvements in document preprocessing and retrieval strategy design.
-An observed failure mode is that top-ranked retrieved chunks may correspond to exam questions that reference a concept (e.g. holomorphic or conformal) rather than the formal definition itself. This is particularly visible in sparse retrieval, where keyword overlap with past exam questions can outweigh semantic proximity to textbook definitions.
+An observed failure mode is that top-ranked retrieved chunks may correspond to exam questions that reference a concept (e.g. holomorphic or conformal mappings) rather than the formal
+textbook definition itself. This behaviour is particularly evident in sparse retrieval, where strong keyword overlap with past exam questions can outweigh semantic proximity to precise definitions.
