@@ -109,3 +109,15 @@ appear across multiple lectures.
 These observations motivate future improvements in document preprocessing and retrieval strategy design.
 An observed failure mode is that top-ranked retrieved chunks may correspond to exam questions that reference a concept (e.g. holomorphic or conformal mappings) rather than the formal
 textbook definition itself. This behaviour is particularly evident in sparse retrieval, where strong keyword overlap with past exam questions can outweigh semantic proximity to precise definitions.
+
+## Conclusion and Future Work
+
+This project presents a small-scale, citation-grounded RAG study assistant designed for exam-oriented PDF study. Through controlled retrieval experiments on representative
+Complex Analysis questions (Q3, Q7, Q18), we compared sparse keyword-based retrieval with TF-IDF semantic retrieval, focusing on evidence recall rather than generation quality.
+
+Results show that sparse retrieval performs strongly for definition-style questions with high lexical overlap, while TF-IDF semantic retrieval demonstrates advantages on
+conceptual questions where relevant explanations do not share exact wording with the query.
+However, semantic retrieval may prioritise contextually related material over precise definitions, highlighting a precision–semantic breadth trade-off.
+
+Future work includes incorporating dense embedding models to improve conceptual alignment, introducing reranking mechanisms to better prioritise formal definitions, and exploring
+definition-aware query handling to mitigate ambiguity between closely related concepts.
