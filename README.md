@@ -112,12 +112,13 @@ textbook definition itself. This behaviour is particularly evident in sparse ret
 
 ## Conclusion and Future Work
 
-This project presents a small-scale, citation-grounded RAG study assistant designed for exam-oriented PDF study. Through controlled retrieval experiments on representative
-Complex Analysis questions (Q3, Q7, Q18), we compared sparse keyword-based retrieval with TF-IDF semantic retrieval, focusing on evidence recall rather than generation quality.
+This project presents a small-scale, citation-grounded RAG study assistant designed for exam-oriented PDF study. Using controlled retrieval experiments on representative
+Complex Analysis questions (Q3, Q7, Q18), we compared sparse keyword-based retrieval with TF-IDF semantic retrieval, with a particular focus on evidence recall rather than answer
+generation quality.
 
-Results show that sparse retrieval performs strongly for definition-style questions with high lexical overlap, while TF-IDF semantic retrieval demonstrates advantages on
-conceptual questions where relevant explanations do not share exact wording with the query.
-However, semantic retrieval may prioritise contextually related material over precise definitions, highlighting a precision–semantic breadth trade-off.
+The results indicate that sparse retrieval performs well for definition-style questions with strong lexical overlap, while TF-IDF semantic retrieval shows advantages for
+conceptual questions where relevant explanations do not share exact wording with the query. At the same time, semantic retrieval may prioritise contextually related material
+over precise formal definitions, highlighting a trade-off between semantic breadth and definition-level precision.
 
-Future work includes incorporating dense embedding models to improve conceptual alignment, introducing reranking mechanisms to better prioritise formal definitions, and exploring
-definition-aware query handling to mitigate ambiguity between closely related concepts.
+Future work will explore the integration of dense embedding models to improve conceptual alignment, the introduction of reranking mechanisms to better prioritise formal definitions,
+and the development of definition-aware query handling strategies to mitigate ambiguity between closely related concepts.
