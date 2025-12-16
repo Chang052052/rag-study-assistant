@@ -20,8 +20,8 @@ The system indexes 10–20 course PDFs, including Analysis III (Complex Analysis
 The proposed system follows a retrieval-augmented pipeline:
 - Document segmentation into manageable text chunks  
 - Sparse retrieval using keyword-based (BM25-style) methods  
-- Dense retrieval using TF-IDF semantic similarity  
-- Evidence-grounded answer generation with explicit source citations   
+- Semantic baseline retrieval using TF-IDF vector space similarity  
+- Evidence-grounded answer generation with explicit source citations
 
 ## Evaluation Plan
 The system is evaluated using a manually curated set of exam-style questions.
@@ -66,7 +66,9 @@ Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a sm
 - Output: Top-K retrieved chunks (K = 3 and K = 5) for each method with manual relevance judgement
 
 ### Experiment Design
-We conduct a small-scale retrieval experiment focusing on evidence recall rather than generation quality.
+I conduct a small-scale retrieval experiment focusing on evidence recall rather than generation quality. TF-IDF is used as a lightweight semantic baseline rather than a true dense
+embedding-based retriever, allowing controlled analysis of retrieval behaviour
+without introducing neural embedding models.
 
 **Retrieval Methods**
 - Sparse retrieval: keyword-based (BM25-style)
@@ -91,11 +93,11 @@ A retrieval is considered successful if at least one of the top-3 chunks contain
 | Question ID | Retrieval Method | Relevant Chunk Retrieved? (Y/N) | Notes |
 |-------------|------------------|----------------------------------|-------|
 | Q3 | Sparse (Keyword) | Yes | Definition-related exam solution retrieved, but sometimes embedded in broader exam context (e.g. conformal mapping) |
-| Q3 | Dense (TF-IDF) | Partial | Top-ranked chunk may prioritise related concepts over the precise definition |
+| Q3 | Semantic baseline (TF-IDF) | Partial | Top-ranked chunk may prioritise related concepts over the precise definition |
 | Q7 | Sparse (Keyword) | Yes | Explicit statement of the Cauchy–Riemann equations retrieved |
-| Q7 | Dense (TF-IDF) | Yes | Correct lecture note section retrieved with contextual explanation |
+| Q7 | Semantic baseline (TF-IDF) | Yes | Correct lecture note section retrieved with contextual explanation |
 | Q18 | Sparse (Keyword) | No | Failed to retrieve relevant local power series explanation |
-| Q18 | Dense (TF-IDF) | Yes | Relevant explanation of local holomorphic expansion retrieved |
+| Q18 | Semantic baseline (TF-IDF) | Yes | Relevant explanation of local holomorphic expansion retrieved |
 
 ## Expected Results and Failure Analysis
 
