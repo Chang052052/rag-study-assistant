@@ -91,6 +91,20 @@ information to answer the question. The results are summarised in a small compar
 A retrieval is considered successful if at least one of the top-3 chunks contains the
 relevant definition, formula, or explanation required by the question.
 
+## Preliminary Results
+
+Below is a template result table for planned retrieval comparison.
+This table will be filled with evidence recall results from both sparse and dense retrieval.
+
+| Question ID | Retrieval Method | Relevant Chunk Retrieved? (Y/N) | Notes |
+|-------------|------------------|----------------------------------|-------|
+| Q1          | Sparse           |                                  |       |
+| Q1          | Dense            |                                  |       |
+| Q7          | Sparse           |                                  |       |
+| Q7          | Dense            |                                  |       |
+| Q18         | Sparse           |                                  |       |
+| Q18         | Dense            |                                  |       |
+
 ## Expected Results and Failure Analysis
 
 ### Expected Results
