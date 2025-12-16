@@ -61,7 +61,18 @@ Q16. How can the Cauchy–Riemann equations be used to show that a function is n
 Q17. In exam questions, how do you typically verify whether a given function is holomorphic?  
 Q18. How are power series used to represent holomorphic functions locally?  
 Q19. What common mistakes do students make when applying the definition of complex differentiability?  
-Q20. Which topics from the notes are most frequently combined in exam-style proof questions?  
+Q20. Which topics from the notes are most frequently combined in exam-style proof questions?
+
+## Retrieval Experiment (Mini)
+Goal: compare sparse (keyword/BM25-style) vs dense (embedding) retrieval on a small subset of exam-style questions, and analyse evidence recall.
+
+**Setup**
+- Data: a subset of the Complex Analysis PDFs in `docs/`
+- Query set: 5 exam-style questions (from the Evaluation Questions section)
+- Output: Top-3 retrieved chunks for each method + a small result table (manual judgement)
+
+**What counts as success?**
+- Each question retrieves at least one relevant chunk that contains the definition/formula/explanation needed.
 
 ## Expected Results and Failure Analysis
 
