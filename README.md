@@ -12,14 +12,10 @@ Traditional keyword-based search makes it difficult to locate precise explanatio
 examples, while large language models may hallucinate answers without reliable sources.
 
 ## Objective
-The goal of this project is to design a retrieval-augmented generation (RAG) study assistant
-that answers exam-related questions strictly based on retrieved PDF evidence, with explicit
-citations to the source documents.
+The goal of this project is to design a retrieval-augmented generation (RAG) study assistant that answers exam-related questions strictly based on retrieved PDF evidence, with explicit citations to the source documents.
 
 ## Data
-The system indexes 10–20 course PDFs, including Analysis III (Complex Analysis) lecture notes,
-tutorial sheets, and past exam papers. Each document is treated as an authoritative knowledge
-source for answering queries.
+The system indexes 10–20 course PDFs, including Analysis III (Complex Analysis) lecture notes, tutorial sheets, and past exam papers. Each document is treated as an authoritative knowledge source for answering queries.
 
 ## Method
 The proposed system follows a retrieval-augmented pipeline:
@@ -30,8 +26,7 @@ The proposed system follows a retrieval-augmented pipeline:
 
 ## Evaluation Plan
 The system is evaluated using a manually curated set of exam-style questions.
-Evaluation focuses on evidence recall, answer usefulness, and common failure modes such as
-missing relevant chunks or ambiguous retrieval results.
+Evaluation focuses on evidence recall, answer usefulness, and common failure modes such as missing relevant chunks or ambiguous retrieval results.
 
 ## Evaluation Questions
 
@@ -78,44 +73,38 @@ We conduct a small-scale retrieval experiment focusing on evidence recall rather
 - Sparse retrieval: keyword-based (BM25-style)
 - Dense retrieval: embedding-based semantic search
 
-**Query Set**
-Five representative exam-style questions are selected from the Evaluation Questions section,
-covering definition-based and conceptual questions.
+### Query Set
+Three representative exam-style questions were selected from the *Evaluation Questions* section to conduct the retrieval experiment. These questions focus on definitions and conceptual understanding commonly tested in Complex Analysis exams:
 
+- **Q3**: What does it mean for a function to be holomorphic on a domain?  
+- **Q7**: State the Cauchy–Riemann equations and explain their role in complex differentiability.  
+- **Q18**: How are power series used to represent holomorphic functions locally?
 **Procedure**
 For each question, the top-3 retrieved text chunks are collected for each retrieval method.
-Retrieved chunks are manually inspected to determine whether they contain sufficient
-information to answer the question. The results are summarised in a small comparison table to support qualitative analysis.
+Retrieved chunks are manually inspected to determine whether they contain sufficient information to answer the question. The results are summarised in a small comparison table to support qualitative analysis.
 
 **Evaluation Criterion**
-A retrieval is considered successful if at least one of the top-3 chunks contains the
-relevant definition, formula, or explanation required by the question.
+A retrieval is considered successful if at least one of the top-3 chunks contains the relevant definition, formula, or explanation required by the question.
 
-## Preliminary Results
-Experiments are currently in progress. The table below reflects the planned evaluation format.
-Below is a template result table for planned retrieval comparison.
-This table will be filled with evidence recall results from both sparse and dense retrieval.
+### Retrieval Results (Evidence Recall)
 
 | Question ID | Retrieval Method | Relevant Chunk Retrieved? (Y/N) | Notes |
 |-------------|------------------|----------------------------------|-------|
-| Q1          | Sparse           |                                  |       |
-| Q1          | Dense            |                                  |       |
-| Q7          | Sparse           |                                  |       |
-| Q7          | Dense            |                                  |       |
-| Q18         | Sparse           |                                  |       |
-| Q18         | Dense            |                                  |       |
+| Q3 | Sparse (Keyword) | Yes | Definition-related exam solution retrieved, but sometimes embedded in broader exam context (e.g. conformal mapping) |
+| Q3 | Dense (TF-IDF) | Partial | Top-ranked chunk may prioritise related concepts over the precise definition |
+| Q7 | Sparse (Keyword) | Yes | Explicit statement of the Cauchy–Riemann equations retrieved |
+| Q7 | Dense (TF-IDF) | Yes | Correct lecture note section retrieved with contextual explanation |
+| Q18 | Sparse (Keyword) | No | Failed to retrieve relevant local power series explanation |
+| Q18 | Dense (TF-IDF) | Yes | Relevant explanation of local holomorphic expansion retrieved |
 
 ## Expected Results and Failure Analysis
 
 ### Expected Results
-The hybrid retrieval approach is expected to outperform purely keyword-based retrieval in
-capturing semantically relevant explanations from lecture notes.
-Citation-grounded generation is expected to reduce hallucinated answers and improve trust
-in exam-oriented responses.
+The hybrid retrieval approach is expected to outperform purely keyword-based retrieval in capturing semantically relevant explanations from lecture notes.
+Citation-grounded generation is expected to reduce hallucinated answers and improve trust in exam-oriented responses.
 
 ### Failure Analysis
-Common failure modes include loss of mathematical symbols during PDF parsing, incomplete
-retrieval caused by overly coarse text chunking, and ambiguity when similar definitions
+Common failure modes include loss of mathematical symbols during PDF parsing, incomplete retrieval caused by overly coarse text chunking, and ambiguity when similar definitions
 appear across multiple lectures.
-These observations motivate future improvements in document preprocessing and retrieval
-strategy design.
+These observations motivate future improvements in document preprocessing and retrieval strategy design.
+An observed failure mode is that top-ranked retrieved chunks may correspond to exam questions that reference a concept (e.g. holomorphic or conformal) rather than the formal definition itself. This is particularly visible in sparse retrieval, where keyword overlap with past exam questions can outweigh semantic proximity to textbook definitions.
