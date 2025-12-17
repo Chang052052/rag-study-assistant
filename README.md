@@ -114,7 +114,7 @@ textbook definition itself. This behaviour is particularly evident in sparse ret
 ## Conclusion and Future Work
 
 This project presents a small-scale, citation-grounded RAG study assistant designed for exam-oriented PDF study. Using controlled retrieval experiments on representative
-Complex Analysis questions (Q3, Q7, Q18), we compared sparse keyword-based retrieval with TF-IDF semantic retrieval, with a particular focus on evidence recall rather than answer
+Complex Analysis questions (Q3, Q7, Q18), I compared sparse keyword-based retrieval with TF-IDF semantic retrieval, with a particular focus on evidence recall rather than answer
 generation quality.
 
 The results indicate that sparse retrieval performs well for definition-style questions with strong lexical overlap, while TF-IDF semantic retrieval shows advantages for
