@@ -19,7 +19,7 @@ The system indexes 10–20 course PDFs, including Analysis III (Complex Analysis
 ## Method
 The proposed system follows a retrieval-augmented pipeline:
 - Document segmentation into manageable text chunks  
-- Sparse retrieval using keyword-based (BM25-style) methods  
+- Sparse lexical retrieval using a keyword overlap–based baseline  
 - Semantic baseline retrieval using TF-IDF vector space similarity  
 - Evidence-grounded answer generation with explicit source citations
 
@@ -58,7 +58,7 @@ Q19. What common mistakes do students make when applying the definition of compl
 Q20. Which topics from the notes are most frequently combined in exam-style proof questions?
 
 ## Retrieval Experiment (Mini)
-Goal: compare sparse (keyword/BM25-style) retrieval with a TF-IDF semantic baseline on a small subset of exam-style questions, and analyse evidence recall.
+Goal: compare a sparse lexical keyword-based baseline with a TF-IDF semantic baseline on a small subset of exam-style questions, and analyse evidence recall.
 
 ### Setup
 - Data: a subset of the Complex Analysis PDFs in `docs/`
@@ -66,12 +66,13 @@ Goal: compare sparse (keyword/BM25-style) retrieval with a TF-IDF semantic basel
 - Output: Top-K retrieved chunks (K = 3 and K = 5) for each method with manual relevance judgement
 
 ### Experiment Design
-I conduct a small-scale retrieval experiment focusing on evidence recall rather than generation quality. TF-IDF is used as a lightweight semantic baseline rather than a true dense
-embedding-based retriever, allowing controlled analysis of retrieval behaviour without introducing neural embedding models.
+I conduct a small-scale retrieval experiment focusing on evidence recall rather than generation quality. TF-IDF is used as a lightweight semantic baseline rather than a true neural
+embedding-based retriever. The sparse retrieval component is implemented as a keyword overlap–based lexical baseline, rather than a full BM25 ranking model.
+This design allows controlled analysis of retrieval behaviour without introducing additional modelling complexity.
 
 **Retrieval Methods**
-- Sparse retrieval: keyword-based (BM25-style)
-- Semantic baseline retrieval: TF-IDF vector space similarity
+- Sparse lexical baseline: keyword overlap–based retrieval
+- Semantic baseline: TF-IDF vector space similarity
 
 ### Query Set
 Three representative exam-style questions were selected from the *Evaluation Questions* section to conduct the retrieval experiment. These questions focus on definitions and conceptual understanding commonly tested in Complex Analysis exams:
@@ -109,7 +110,7 @@ Common failure modes include loss of mathematical symbols during PDF parsing, in
 appear across multiple lectures.
 These observations motivate future improvements in document preprocessing and retrieval strategy design.
 An observed failure mode is that top-ranked retrieved chunks may correspond to exam questions that reference a concept (e.g. holomorphic or conformal mappings) rather than the formal
-textbook definition itself. This behaviour is particularly evident in sparse retrieval, where strong keyword overlap with past exam questions can outweigh semantic proximity to precise definitions.
+textbook definition itself. This behaviour is particularly evident in sparse retrieval, where strong keyword overlap with past exam questions can outweigh semantic proximity to precise definitions. In addition, the sparse baseline does not implement full BM25-style weighting or length normalisation, which can lead to strong keyword matches in exam solutions being ranked highly even when they do not correspond to formal textbook definitions.
 
 ## Conclusion and Future Work
 
